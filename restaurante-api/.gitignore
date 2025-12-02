@@ -1,0 +1,33 @@
+/node_modules
+.env
+
+
+*.log
+
+
+
+/dist
+
+
+
+.tsbuildinfo
+
+Cache do npm
+
+.npm
+
+Ferramentas de Desenvolvimento
+
+Cache e arquivos de debug do VS Code
+
+.vscode/
+
+MacOS
+
+.DS_Store
+
+Docker
+
+Arquivos de volume (que não devem ir para o Git)
+
+volumes/
