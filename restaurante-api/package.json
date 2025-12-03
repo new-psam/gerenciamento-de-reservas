@@ -4,7 +4,9 @@
   "description": "gerenciamento de reservas para restaurante com avaliação",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
   },
   "keywords": [],
   "author": "Marcelino P Santos",
@@ -27,6 +29,8 @@
     "fastify-plugin": "^5.1.0",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27",
     "zod": "^4.1.13"
   }
 }
