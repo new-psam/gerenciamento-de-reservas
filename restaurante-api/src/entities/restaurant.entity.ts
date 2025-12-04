@@ -1,9 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { IAddress } from "./models/address.interface";
-import { ICuisine } from "./models/cuisine.interface";
+import { Column, Entity, JoinColumn, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { IRestaurant } from "./models/restaurant.interface";
 import { Cuisine } from "./cuisine.entity";
 import { Address } from "./address.entitty";
+import { RestaurantSlot } from "./restaurantSlot.entity";
+import { Reservation } from "./reservation.entity";
 @Entity({
     name: 'restaurant',
 })
@@ -44,7 +44,7 @@ export class Restaurant implements IRestaurant {
      })
     average_rating!: number;
 
-    // ------- Realcionamentos
+    // ------- Realacionamentos
 
     @OneToOne(() => Address)
     @JoinColumn({ name: 'address_id'}) // Cria a coluna 'address_id na tabela 'restaurant'
@@ -53,10 +53,10 @@ export class Restaurant implements IRestaurant {
     @ManyToMany(() => Cuisine, cuisine => cuisine.restaurants)
     cuisines?: Cuisine[]
 
-    @OneToOne(() => RestaurantSlot, slot => slot.restaurant)
+    @OneToMany(() => RestaurantSlot, slot => slot.restaurant)
     slots!: RestaurantSlot[];
 
-    @OneToMany(() => Reservation, reservation => reservation.restarant)
+    @OneToMany(() => Reservation, reservation => reservation.restaurants)
     reservations!: Reservation[];
     
 }

@@ -20,7 +20,9 @@ export class Cuisine implements ICuisine {
 
     // Relacionamento: MUITOS para MUITOS com Restaurant.
     // O lado 'Cuisine' é o lado primário que define a tabela de junção.
-    @ManyToMany(() => Restaurant, restaurant => restaurant.cuisines)
+    @ManyToMany(() => Restaurant, restaurant => restaurant.cuisines, {
+        cascade: true,
+    })
     @JoinTable({
         name: 'restaurant_cuisine', //nome da tabela Intermediária
         joinColumn: {
