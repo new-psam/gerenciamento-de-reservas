@@ -6,4 +6,6 @@ export interface ICuisineRepository {
     create(cuisine: ICuisine): Promise<ICuisine>
     update(cuisine: ICuisine): Promise<ICuisine>
     delete(id: string): Promise<void>
+    //busca múltiplas cozinhas por uma lista de Ids
+    findByIds(ids: string[]): Promise<ICuisine[]>
 }

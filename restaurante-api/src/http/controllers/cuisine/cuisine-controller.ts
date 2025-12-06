@@ -4,8 +4,13 @@ import { z } from 'zod';
 import { 
     cuisineBodySchema, 
     cuisineParamsSchema, 
-    cuisineQuerySchema } from "./cuisine-schemas";
-import { makeCreateCuisineUseCase, makeDeleteCuisineUseCase, makeFindAllCuisinesUseCase, makeFindCuisineByIdUseCase, makeUpdateCuisineUseCase } from "@/use-cases/cuisine/cuisine-use-case-factory";
+    cuisineQuerySchema } from "../../../schemas/cuisine.schema";
+import { 
+    makeCreateCuisineUseCase, 
+    makeDeleteCuisineUseCase, 
+    makeFindAllCuisinesUseCase, 
+    makeFindCuisineByIdUseCase, 
+    makeUpdateCuisineUseCase } from "@/use-cases/cuisine/cuisine-use-case-factory";
 import { error } from "console";
 // Importa todas as instâncias dos Use Cases do Factory Centralizado
 
@@ -27,7 +32,7 @@ export async function listCuisines(
         return reply.status(200).send({
             data: cuisines,
             total: cuisines.length,
-            message: "Lista de cozinhas recuperadascom sucesso!"
+            message: "Lista de cozinhas recuperadas com sucesso!"
         })
     } catch (error) {
         request.log.error(error);
