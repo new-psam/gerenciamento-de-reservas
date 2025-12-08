@@ -7,6 +7,7 @@ import { FindAllRestaurantUseCase } from "./findAll-restaurant-use-case";
 import { FindRestaurantByIdUseCase } from "./findById-restaurant-use-case";
 import { UpdateRestaurantUseCase } from "./update-restaurant-use-case";
 import { DeleteRestaurantUseCase } from "./delete-restaurant-use-case";
+import { SearchRestaurantByAddressUseCase } from "./SearchRestaurantByAddressuse-case";
 
 
 const restaurantRepository = new RestaurantRepository();
@@ -23,5 +24,10 @@ export const makeCreateRestaurantUseCase = new CreateRestaurantUseCase(
 //restante
 export const makeFindAllRestaurantUseCase = new FindAllRestaurantUseCase(restaurantRepository);
 export const makeFindRestaurantByIdUseCase = new FindRestaurantByIdUseCase(restaurantRepository);
-export const makeUpdateRestaurantUseCase = new UpdateRestaurantUseCase(restaurantRepository);
+export const makeUpdateRestaurantUseCase = new UpdateRestaurantUseCase(
+    restaurantRepository, 
+    addressRepository, 
+    cuisineRepository
+);
 export const makeDeleteRestaurantUseCase = new DeleteRestaurantUseCase(restaurantRepository);
+export const makeSearchRestaurantByAddressUseCase = new SearchRestaurantByAddressUseCase(restaurantRepository);

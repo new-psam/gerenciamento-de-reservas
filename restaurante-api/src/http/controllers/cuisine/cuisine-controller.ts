@@ -60,7 +60,7 @@ export async function getCuisineById(
     } catch (error) {
         request.log.error(error);
         // ZodError já é tratado pela validação de parâmetro, mas mantemos o erro 500 para outros.
-        return reply.status(500).send({ error: "Erro interno ao buscar a."});
+        return reply.status(500).send({ error: "Erro interno ao buscar a cozinha"});
     }
 }
 

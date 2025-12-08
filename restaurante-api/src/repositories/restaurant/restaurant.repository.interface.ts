@@ -6,4 +6,6 @@ export interface IRestaurantRepository {
     create(restaurant: IRestaurant): Promise<IRestaurant>
     update(restaurant: IRestaurant): Promise<IRestaurant>
     delete(id: string): Promise<void>
+    // Busca restaurantes filtrando por cidade e opcionalmente por rua.
+    searchByAddress(city: string, street?: string): Promise<IRestaurant[]>
 }

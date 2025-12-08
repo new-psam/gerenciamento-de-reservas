@@ -6,7 +6,7 @@ import { Reservation } from '@/entities/reservation.entity';
 import { Restaurant } from '@/entities/restaurant.entity';
 import { RestaurantSlot } from '@/entities/restaurantSlot.entity';
 import { User } from '@/entities/user.entity';
-import { InitialSchema1764954848488 } from '../migrations/1764954848488-InitialSchema';
+
 
 
 export const appDataSource = new DataSource({
@@ -22,7 +22,7 @@ export const appDataSource = new DataSource({
     // Configuração CRÍTICA para Migrations
     
     synchronize: false, //env.NODE_ENV === 'development', // Use 'true' em dev, 'false' em produção
-    migrations: [InitialSchema1764954848488],
+    migrations: [__dirname + '/../migrations/*{.ts,.js}'], //,[InitialSchema1764954848488, ForceCascadeOnSlots1765151120731]
     migrationsRun: false, // Não rodar automaticamente no startup do servidor
 
 });

@@ -53,10 +53,16 @@ export class Restaurant implements IRestaurant {
     @ManyToMany(() => Cuisine, cuisine => cuisine.restaurants)
     cuisines?: Cuisine[]
 
-    @OneToMany(() => RestaurantSlot, slot => slot.restaurant)
+    @OneToMany(() => RestaurantSlot, slot => slot.restaurant, {
+        cascade: true,
+        onDelete: 'CASCADE'
+    })
     slots!: RestaurantSlot[];
 
-    @OneToMany(() => Reservation, reservation => reservation.restaurants)
+    @OneToMany(() => Reservation, reservation => reservation.restaurants, {
+        cascade: true,
+        onDelete: 'CASCADE'
+    })
     reservations!: Reservation[];
     
 }

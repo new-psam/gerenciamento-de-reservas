@@ -2,6 +2,7 @@ import { Restaurant } from "@/entities/restaurant.entity";
 import { BaseRepository } from "@/lib/base/baseRepository";
 import { IRestaurantRepository } from "./restaurant.repository.interface";
 import { IRestaurant } from "@/entities/models/restaurant.interface";
+import { Like } from "typeorm";
 
 export class RestaurantRepository extends BaseRepository<Restaurant> implements IRestaurantRepository {
     constructor() {
@@ -32,5 +33,23 @@ export class RestaurantRepository extends BaseRepository<Restaurant> implements 
     }
     async delete(id: string): Promise<void> {
         await this.repository.delete(id);
+    }
+
+    // novo método de busca por endereço
+    async searchByAddress(city: string, street?: string): Promise<IRestaurant[]> {
+        const whereClause: any = {
+            address: {
+                city: Like(`%${city}%`)
+            }
+        };
+
+        if (street) {
+            whereClause.address.street = Like(`%${street}%`);
+        };
+
+        return this.repository.find({
+            relations: ['cuisines', 'address'],
+            where: whereClause,
+        }) as any;
     }
 }
