@@ -5,6 +5,7 @@ import fp from 'fastify-plugin';
 import { cuisineRoutes } from './http/controllers/cuisine/routes';
 import { env } from "./env/index";
 import { restaurantRoutes } from "./http/controllers/restaurant/routes";
+import { userRoutes } from "./http/controllers/user/routes";
 
 // 1. Instância do Fastify exportada. Não contém configuração neste ponto.
 export const app = Fastify({logger: true});
@@ -30,6 +31,7 @@ export async function setupApp() {
 
     app.register(cuisineRoutes, { prefix: "/api/cuisines"});
     app.register(restaurantRoutes, { prefix: "/api/restaurants"});
+    app.register(userRoutes, {prefix: "/api/users"});
 }
 
 
